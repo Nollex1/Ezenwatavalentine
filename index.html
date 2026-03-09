@@ -148,6 +148,8 @@
         <button onclick="Tawk_API.toggle()" class="cta-secondary sm">Ask About This</button>
       </div>
     </div>
+
+
     <div class="pb-content">
       <div class="pb-info">
         <h3 class="pb-title">Domus Projects<br><em>Real Estate Solution</em></h3>
@@ -161,17 +163,21 @@
         </div>
         <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
       </div>
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/domus-1.png','Domus Projects — Hero',['screenshots/domus-1.png','screenshots/domus-2.png','screenshots/domus-3.png','screenshots/domus-4.png'])">
-          <img src="Domus.png" alt="Domus Hero"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb" onclick="openLb('screenshots/domus-2.png','Domus Projects — Listings',['screenshots/domus-1.png','screenshots/domus-2.png','screenshots/domus-3.png','screenshots/domus-4.png'])"><img src="Domus-1.png" alt="Domus Listings"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/domus-3.png','Domus Projects — More Listings',['screenshots/domus-1.png','screenshots/domus-2.png','screenshots/domus-3.png','screenshots/domus-4.png'])"><img src="Domus-2.png" alt="Domus More"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/domus-4.png','Domus Projects — About Section',['screenshots/domus-1.png','screenshots/domus-2.png','screenshots/domus-3.png','screenshots/domus-4.png'])"><img src="Domus-3.png" alt="Domus About"/></div>
-        </div>
-      </div>
+
+
+      <div class="pb-shots" data-proj="domus">
+  <div class="ps-main" data-proj="domus" data-idx="0" data-cap="Domus Projects — Hero" onclick="openLb(this)">
+    <img src="Domus.png" alt="Domus Hero"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb" data-proj="domus" data-idx="1" data-cap="Domus — Listings" onclick="openLb(this)"><img src="Domus-1.png" alt="Domus Listings"/></div>
+    <div class="ps-thumb" data-proj="domus" data-idx="2" data-cap="Domus — More Listings" onclick="openLb(this)"><img src="Domus-2.png" alt="Domus More"/></div>
+    <div class="ps-thumb" data-proj="domus" data-idx="3" data-cap="Domus — About Section" onclick="openLb(this)"><img src="Domus-3.png" alt="Domus About"/></div>
+  </div>
+</div>
+          
+
     </div>
   </div>
 
@@ -188,16 +194,16 @@
       </div>
     </div>
     <div class="pb-content pb-content-rev">
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/interiors-1.png','Interiors by Lhaide — Hero',['screenshots/interiors-1.png','screenshots/interiors-2.png','screenshots/interiors-3.png'])">
-          <img src="InteriorsbyLhaide.png" alt="Interiors by Lhaide Hero"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb" onclick="openLb('screenshots/interiors-2.png','Interiors by Lhaide — About',['screenshots/interiors-1.png','screenshots/interiors-2.png','screenshots/interiors-3.png'])"><img src="InteriorsbyLhaide Story.png" alt="About Studio"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/interiors-3.png','Interiors by Lhaide — Instagram Feed',['screenshots/interiors-1.png','screenshots/interiors-2.png','screenshots/interiors-3.png'])"><img src="InteriorsbyLhaide IG.png" alt="Instagram Gallery"/></div>
-        </div>
-      </div>
+     <div class="pb-shots" data-proj="interiors">
+  <div class="ps-main" data-proj="interiors" data-idx="0" data-cap="Interiors by Lhaide — Hero" onclick="openLb(this)">
+    <img src="InteriorsbyLhaide.png" alt="Interiors by Lhaide Hero"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb" data-proj="interiors" data-idx="1" data-cap="Interiors by Lhaide — About" onclick="openLb(this)"><img src="InteriorsbyLhaide Story.png" alt="About Studio"/></div>
+    <div class="ps-thumb" data-proj="interiors" data-idx="2" data-cap="Interiors by Lhaide — Instagram" onclick="openLb(this)"><img src="InteriorsbyLhaide IG.png" alt="Instagram Gallery"/></div>
+  </div>
+</div>
       <div class="pb-info">
         <h3 class="pb-title">Interiors by Lhaide<br><em>Design Studio Site</em></h3>
         <p>A luxury interior design website for Lhaide's studio in Ibadan, Nigeria. Warm taupe and gold branding, portfolio showcase with real project photos, Instagram feed integration, about section with CAC and SMEDAN certifications, and a WhatsApp quote CTA. Live on GitHub Pages.</p>
@@ -238,16 +244,16 @@
         </div>
         <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
       </div>
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/elite-1.png','Elite Decor — Hero',['screenshots/elite-1.png','screenshots/elite-2.png','screenshots/elite-3.png'])">
-          <img src="Elite Decor.png" alt="Elite Decor Hero"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb" onclick="openLb('screenshots/elite-2.png','Elite Decor — Process',['screenshots/elite-1.png','screenshots/elite-2.png','screenshots/elite-3.png'])"><img src="Elite Based.png" alt="Elite Decor Process"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/elite-3.png','Elite Decor — Location',['screenshots/elite-1.png','screenshots/elite-2.png','screenshots/elite-3.png'])"><img src="Elite Process.png" alt="Elite Decor Location"/></div>
-        </div>
-      </div>
+      <div class="pb-shots" data-proj="elite">
+  <div class="ps-main" data-proj="elite" data-idx="0" data-cap="Elite Decor — Hero" onclick="openLb(this)">
+    <img src="Elite Decor.png" alt="Elite Decor Hero"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb" data-proj="elite" data-idx="1" data-cap="Elite Decor — Process" onclick="openLb(this)"><img src="Elite Based.png" alt="Elite Decor Process"/></div>
+    <div class="ps-thumb" data-proj="elite" data-idx="2" data-cap="Elite Decor — Location" onclick="openLb(this)"><img src="Elite Process.png" alt="Elite Decor Location"/></div>
+  </div>
+</div>
     </div>
   </div>
 
@@ -264,16 +270,16 @@
       </div>
     </div>
     <div class="pb-content pb-content-rev">
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/ayb-1.png','AYB Standard — Hero',['screenshots/ayb-1.png','screenshots/ayb-2.png','screenshots/ayb-3.png'])">
-          <img src="AYB ST.png" alt="AYB Standard Hero"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb" onclick="openLb('screenshots/ayb-2.png','AYB Standard — Featured Projects',['screenshots/ayb-1.png','screenshots/ayb-2.png','screenshots/ayb-3.png'])"><img src="AYB Projects.png" alt="AYB Projects"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/ayb-3.png','AYB Standard — Gallery',['screenshots/ayb-1.png','screenshots/ayb-2.png','screenshots/ayb-3.png'])"><img src="AYB Gallery.png" alt="AYB Gallery"/></div>
-        </div>
-      </div>
+      <div class="pb-shots" data-proj="ayb">
+  <div class="ps-main" data-proj="ayb" data-idx="0" data-cap="AYB Standard — Hero" onclick="openLb(this)">
+    <img src="AYB ST.png" alt="AYB Standard Hero"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb" data-proj="ayb" data-idx="1" data-cap="AYB Standard — Featured Projects" onclick="openLb(this)"><img src="AYB Projects.png" alt="AYB Projects"/></div>
+    <div class="ps-thumb" data-proj="ayb" data-idx="2" data-cap="AYB Standard — Gallery" onclick="openLb(this)"><img src="AYB Project Gallery.png" alt="AYB Gallery"/></div>
+  </div>
+</div>
       <div class="pb-info">
         <h3 class="pb-title">AYB Standard<br><em>Furniture &amp; Interiors</em></h3>
         <p>A luxury bespoke furniture and interior installations website for AYB Standard — CAC Registered, based in Lekki, Lagos. "Transforming Spaces into Masterpieces." Features real project photography, a full gallery with completed installations, and a consultation booking system. Live on GitHub Pages.</p>
@@ -314,16 +320,16 @@
         </div>
         <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
       </div>
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/bina-1.png','Bina Brothers — Hero',['screenshots/bina-1.png','screenshots/bina-2.png','screenshots/bina-3.png'])">
-          <img src="Bina Brothers.png" alt="Bina Brothers Hero"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb" onclick="openLb('screenshots/bina-2.png','Bina Brothers — About',['screenshots/bina-1.png','screenshots/bina-2.png','screenshots/bina-3.png'])"><img src="Bina Brothers.png" alt="Bina About"/></div>
-          <div class="ps-thumb" onclick="openLb('screenshots/bina-3.png','Bina Brothers — Services',['screenshots/bina-1.png','screenshots/bina-2.png','screenshots/bina-3.png'])"><img src="Bina Brothers.png" alt="Bina Services"/></div>
-        </div>
-      </div>
+      <div class="pb-shots" data-proj="bina">
+  <div class="ps-main" data-proj="bina" data-idx="0" data-cap="Bina Brothers — Hero" onclick="openLb(this)">
+    <img src="Bina Brothers.png" alt="Bina Brothers Hero"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb" data-proj="bina" data-idx="1" data-cap="Bina Brothers — About" onclick="openLb(this)"><img src="Bina Brothers Built.png" alt="Bina About"/></div>
+    <div class="ps-thumb" data-proj="bina" data-idx="2" data-cap="Bina Brothers — Services" onclick="openLb(this)"><img src="Bina Brothers Services.png" alt="Bina Services"/></div>
+  </div>
+</div>
     </div>
   </div>
 
@@ -340,15 +346,15 @@
       </div>
     </div>
     <div class="pb-content pb-content-rev">
-      <div class="pb-shots">
-        <div class="ps-main" onclick="openLb('screenshots/zillow-1.png','Zillow Clone — Agent Profile',['screenshots/zillow-1.png','screenshots/zillow-2.png'])">
-          <img src="Zillow.png" alt="Zillow Agent Profile"/>
-          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
-        </div>
-        <div class="ps-thumbs">
-          <div class="ps-thumb wide-thumb" onclick="openLb('screenshots/zillow-2.png','Zillow Clone — Property Gallery',['screenshots/zillow-1.png','screenshots/zillow-2.png'])"><img src="Zillow.png" alt="Zillow Gallery"/></div>
-        </div>
-      </div>
+      <div class="pb-shots" data-proj="zillow">
+  <div class="ps-main" data-proj="zillow" data-idx="0" data-cap="Zillow Clone — Agent Profile" onclick="openLb(this)">
+    <img src="Zillow.png" alt="Zillow Agent Profile"/>
+    <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+  </div>
+  <div class="ps-thumbs">
+    <div class="ps-thumb wide-thumb" data-proj="zillow" data-idx="1" data-cap="Zillow Clone — Property Gallery" onclick="openLb(this)"><img src="Zillow Property.png" alt="Zillow Gallery"/></div>
+  </div>
+</div>
       <div class="pb-info">
         <h3 class="pb-title">Zillow Clone<br><em>Agent Profile Page</em></h3>
         <p>A pixel-perfect Zillow agent profile page clone — complete with agent headshot, recent sales with real property photos, stats (20 sales / 878 total / $25K–$710K price range), bio section, and a property photo gallery. Built to demonstrate full Zillow-level UX capability to real estate clients.</p>
@@ -556,21 +562,21 @@ type();
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('in-view');obs.unobserve(i.target);}}),{threshold:0.06});
 document.querySelectorAll('.reveal-sec,.reveal-item,.exp-card').forEach(el=>obs.observe(el));
 
-// LIGHTBOX
 let lbImgs=[],lbIdx=0;
-function openLb(src,cap,imgs){
-  lbImgs=imgs||[src]; lbIdx=lbImgs.indexOf(src);
-  document.getElementById('lbImg').src=src;
-  document.getElementById('lbCap').textContent=cap||'';
+function openLb(el){
+  const proj=el.dataset.proj, idx=parseInt(el.dataset.idx)||0;
+  const imgs=document.querySelectorAll(`[data-proj="${proj}"] img`);
+  lbImgs=Array.from(imgs).map(i=>i.src);
+  lbIdx=idx;
+  document.getElementById('lbImg').src=lbImgs[lbIdx];
+  document.getElementById('lbCap').textContent=el.dataset.cap||'';
   document.getElementById('lb').classList.add('lb-open');
   document.getElementById('lbPrev').style.display=lbImgs.length>1?'flex':'none';
   document.getElementById('lbNext').style.display=lbImgs.length>1?'flex':'none';
   document.body.style.overflow='hidden';
 }
 function closeLb(){document.getElementById('lb').classList.remove('lb-open');document.body.style.overflow='';}
-function lbNav(dir,e){e.stopPropagation();lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;document.getElementById('lbImg').src=lbImgs[lbIdx];}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbNav(-1,{stopPropagation:()=>{}});if(e.key==='ArrowRight')lbNav(1,{stopPropagation:()=>{}});});
-
+function lbNav(dir,e){if(e)e.stopPropagation();lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;document.getElementById('lbImg').src=lbImgs[lbIdx];}
 // CONTACT
 function submitForm(e){e.preventDefault();const n=document.getElementById('cfN').value,em=document.getElementById('cfE').value,s=document.getElementById('cfS').value||'Inquiry',m=document.getElementById('cfM').value;window.location.href=`mailto:ezeznwatavalentine1@gmail.com?subject=${encodeURIComponent(s+' - '+n)}&body=${encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+m)}`;document.getElementById('cfOk').style.display='block';document.getElementById('cf').reset();}
 </script>

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ezenwata Valentine — Developer · Builder · Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   EZENWATA VALENTINE — Luxury Editorial Portfolio
+   ============================================================ */
+:root{
+  --ink:#0d0d0d;--ink2:#141414;--ink3:#1c1c1c;--ink4:#252525;
+  --card:#181818;--ivory:#f7f4ef;--ivory2:#ede9e1;--cream:#faf8f4;
+  --red:#c0392b;--red2:#a93226;--red-glow:rgba(192,57,43,0.25);
+  --gold:#b5965a;--gold2:#d4aa6c;--white:#ffffff;
+  --dim:#888;--dim2:#555;
+  --border:rgba(255,255,255,0.08);--border-light:rgba(0,0,0,0.1);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --r:16px;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--ink);line-height:1.6;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+button{cursor:none;font-family:var(--sans);border:none;}
+strong{font-weight:600;}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;width:36px;height:36px;border:1.5px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.3s,height 0.3s,border-color 0.3s,background 0.3s;mix-blend-mode:multiply;}
+.cursor-dot{position:fixed;width:5px;height:5px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cursor.ch{width:52px;height:52px;border-color:var(--red);background:rgba(192,57,43,0.06);}
+
+/* REVEAL */
+.reveal-sec,.reveal-item,.exp-card{opacity:0;transform:translateY(36px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);}
+.reveal-item:nth-child(2){transition-delay:0.1s;}
+.reveal-item:nth-child(3){transition-delay:0.2s;}
+.reveal-item:nth-child(4){transition-delay:0.3s;}
+.in-view{opacity:1;transform:translateY(0);}
+
+/* LIVE DOT */
+.live-d,.pulse-ring{display:inline-block;width:7px;height:7px;border-radius:50%;background:#16a34a;flex-shrink:0;}
+.pulse-ring{animation:pr 1.8s ease-in-out infinite;}
+@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,0.5);}60%{box-shadow:0 0 0 5px transparent;}}
+
+/* BUTTONS */
+.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--ivory);padding:13px 26px;border-radius:50px;font-size:0.85rem;font-weight:500;letter-spacing:0.02em;border:none;transition:all 0.25s;cursor:none;}
+.cta-primary:hover{background:var(--red);transform:translateY(-2px);}
+.cta-primary.sm{padding:10px 20px;font-size:0.78rem;}
+.cta-primary.lg{padding:16px 36px;font-size:0.9rem;}
+.cta-primary.full{width:100%;justify-content:center;}
+.cta-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);padding:13px 26px;border-radius:50px;font-size:0.85rem;font-weight:500;letter-spacing:0.02em;border:1.5px solid rgba(13,13,13,0.2);transition:all 0.25s;cursor:none;}
+.cta-secondary:hover{border-color:var(--ink);background:rgba(13,13,13,0.04);}
+.cta-secondary.sm{padding:10px 20px;font-size:0.78rem;}
+.text-link{color:var(--red);border-bottom:1px solid currentColor;padding-bottom:1px;}
+.text-btn{background:none;border:none;color:var(--red);font-size:inherit;font-family:var(--sans);font-weight:500;border-bottom:1px solid var(--red);padding:0;cursor:none;}
+.btn-ghost{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:8px 18px;border-radius:50px;font-size:0.78rem;font-weight:500;backdrop-filter:blur(8px);transition:all 0.2s;cursor:none;}
+.btn-ghost:hover{background:rgba(255,255,255,0.18);}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 56px;}
+.sec-label{display:inline-block;font-family:var(--mono);font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim);margin-bottom:24px;opacity:0.7;}
+.display-h2{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;}
+.display-h2 em{font-style:italic;color:var(--red);}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 56px;transition:all 0.4s;}
+.nav.scrolled{background:rgba(247,244,239,0.94);backdrop-filter:blur(20px);padding:16px 56px;border-bottom:1px solid var(--border-light);}
+.nav-logo{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:-0.03em;color:var(--ink);}
+.nav-logo em{font-style:normal;color:var(--red);}
+.nav-center{display:flex;align-items:center;gap:36px;}
+.nav-center a{font-size:0.82rem;font-weight:400;color:rgba(13,13,13,0.55);letter-spacing:0.01em;transition:color 0.2s;}
+.nav-center a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:none;}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:1px;}
+.mob-menu{position:fixed;inset:0;z-index:200;background:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
+.mob-menu.open{transform:translateX(0);}
+.mob-menu a{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);}
+.mob-x{position:absolute;top:28px;right:28px;background:none;border:none;font-size:1.2rem;color:var(--dim);cursor:none;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;gap:60px;position:relative;background:var(--ink);overflow:hidden;}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");pointer-events:none;opacity:0.5;}
+.hero-left{flex:1;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,0.12);padding:7px 16px;border-radius:50px;font-size:0.72rem;font-weight:400;color:rgba(247,244,239,0.5);margin-bottom:32px;letter-spacing:0.04em;}
+.hero-h1{font-family:var(--serif);font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.0;letter-spacing:-0.02em;color:var(--ivory);margin-bottom:24px;overflow:hidden;}
+.line-a,.line-b{display:block;}
+.line-a{animation:slideUp 1s cubic-bezier(0.16,1,0.3,1) both;}
+.line-b{animation:slideUp 1s cubic-bezier(0.16,1,0.3,1) 0.15s both;}
+.line-b em{font-style:italic;color:var(--gold);}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.hero-role-line{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.role-bar{width:28px;height:1px;background:var(--red);flex-shrink:0;}
+.typed-wrap{font-family:var(--serif);font-size:1.4rem;font-weight:300;font-style:italic;color:var(--gold2);min-height:34px;}
+.blink{animation:bl 1s step-end infinite;color:var(--red);}
+@keyframes bl{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-p{font-size:0.95rem;color:rgba(247,244,239,0.5);line-height:1.8;max-width:480px;margin-bottom:36px;font-weight:300;}
+.hero-ctas{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;}
+.hero .cta-primary{background:var(--ivory);color:var(--ink);}
+.hero .cta-primary:hover{background:var(--gold2);color:var(--ink);}
+.hero .cta-secondary{color:var(--ivory);border-color:rgba(247,244,239,0.2);}
+.hero .cta-secondary:hover{background:rgba(247,244,239,0.06);border-color:rgba(247,244,239,0.4);}
+.hero-meta{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hm{display:flex;flex-direction:column;gap:3px;}
+.hm-n{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--ivory);letter-spacing:-0.04em;line-height:1;}
+.hm-l{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:rgba(247,244,239,0.35);}
+.hm-sep{width:1px;height:36px;background:rgba(255,255,255,0.1);}
+
+/* HERO RIGHT */
+.hero-right{flex-shrink:0;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.hero-photo-frame{position:relative;width:300px;height:360px;}
+.hpf-inner{width:260px;height:310px;border-radius:12px;overflow:hidden;position:absolute;top:0;left:0;background:var(--ink3);border:1px solid rgba(255,255,255,0.1);}
+.hpf-inner img{width:100%;height:100%;object-fit:cover;}
+.hpf-fallback{width:100%;height:100%;display:none;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;font-weight:300;color:var(--gold);background:linear-gradient(160deg,var(--ink3),var(--ink4));}
+.hpf-tag{position:absolute;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:rgba(247,244,239,0.8);padding:6px 14px;border-radius:50px;font-size:0.7rem;font-weight:500;white-space:nowrap;animation:floatTag 3s ease-in-out infinite alternate;}
+.t1{bottom:80px;right:0;}.t2{top:20px;right:0;animation-delay:-1.5s;}.t3{bottom:20px;right:30px;animation-delay:-0.8s;}
+@keyframes floatTag{from{transform:translateY(0);}to{transform:translateY(-6px);}}
+.hpf-label{position:absolute;bottom:-16px;left:0;background:var(--red);color:white;padding:8px 16px;border-radius:8px;display:flex;flex-direction:column;gap:1px;}
+.hpf-label span{font-size:0.65rem;}
+.hpf-label span:first-child{font-weight:600;font-size:0.72rem;}
+.hero-socials{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.hs-link{font-size:0.72rem;color:rgba(247,244,239,0.4);border:1px solid rgba(255,255,255,0.1);padding:6px 14px;border-radius:50px;transition:all 0.2s;font-weight:500;}
+.hs-link:hover{color:var(--gold2);border-color:rgba(181,150,90,0.3);}
+
+/* SCROLL HINT */
+.hero-scroll-hint{position:absolute;bottom:40px;left:56px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(247,244,239,0.3));animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:0.8;}}
+.hero-scroll-hint span{font-family:var(--mono);font-size:0.58rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(247,244,239,0.25);writing-mode:vertical-rl;}
+
+/* ABOUT */
+.about-sec{background:var(--cream);padding:100px 0;}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;margin-top:8px;}
+.about-right p{font-size:0.95rem;color:#444;line-height:1.85;margin-bottom:18px;font-weight:300;}
+.about-right strong{color:var(--ink);font-weight:600;}
+.stack-block{margin-top:28px;}
+.stack-label{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--dim);margin-bottom:12px;}
+.stack-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.stack-chips span{font-size:0.72rem;font-weight:400;background:white;border:1px solid var(--border-light);padding:5px 13px;border-radius:50px;color:#555;transition:all 0.2s;}
+.stack-chips span:hover{border-color:var(--red);color:var(--red);}
+.about-facts{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+.af{display:flex;align-items:center;gap:11px;font-size:0.84rem;color:#555;font-weight:300;}
+
+/* WORK SECTION */
+.work-sec{background:var(--ivory);}
+.work-top{padding:100px 0 48px;}
+.work-header{margin-bottom:0;}
+.work-sub{font-size:0.92rem;color:var(--dim);max-width:560px;line-height:1.75;font-weight:300;margin-top:8px;}
+
+/* PROJECT BLOCKS */
+.proj-block{padding:64px 0;border-top:1px solid var(--border-light);}
+.proj-block-alt{background:var(--ink);border-top:none;}
+.proj-block-alt .pb-info p,.proj-block-alt .pb-feats div,.proj-block-alt .pb-stack{color:rgba(247,244,239,0.55);}
+.proj-block-alt .pb-title{color:var(--ivory);}
+.proj-block-alt .pb-title em{color:var(--gold2);}
+.proj-block-alt .pb-cat{color:rgba(247,244,239,0.3);}
+.proj-block-alt .pb-badge{color:var(--gold2);background:rgba(181,150,90,0.1);border-color:rgba(181,150,90,0.2);}
+.proj-block-alt .cta-primary{background:var(--ivory);color:var(--ink);}
+.proj-block-alt .cta-primary:hover{background:var(--gold2);}
+.proj-block-alt .cta-secondary{color:var(--ivory);border-color:rgba(247,244,239,0.2);}
+
+.pb-header{max-width:1200px;margin:0 auto;padding:0 56px;display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
+.pb-badge{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:500;color:var(--red);background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.15);padding:4px 12px;border-radius:50px;margin-bottom:6px;}
+.pb-cat{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--dim);}
+.pb-links{display:flex;gap:10px;flex-wrap:wrap;}
+
+.pb-content{max-width:1200px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start;}
+.pb-content-rev{grid-template-columns:1.4fr 1fr;}
+
+.pb-info{display:flex;flex-direction:column;gap:16px;}
+.pb-title{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1.2;color:var(--ink);}
+.pb-title em{font-style:italic;color:var(--red);}
+.pb-info p{font-size:0.88rem;color:#555;line-height:1.85;font-weight:300;}
+.pb-feats{display:flex;flex-direction:column;gap:7px;}
+.pb-feats div{font-size:0.8rem;color:#666;line-height:1.6;}
+.pb-stack{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.06em;padding:10px 0 0;border-top:1px solid var(--border-light);}
+
+/* SCREENSHOT GALLERY */
+.pb-shots{display:flex;flex-direction:column;gap:10px;}
+.ps-main{position:relative;border-radius:10px;overflow:hidden;cursor:none;line-height:0;box-shadow:0 8px 40px rgba(0,0,0,0.15);transition:transform 0.3s,box-shadow 0.3s;border:1px solid rgba(0,0,0,0.08);}
+.ps-main:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(0,0,0,0.2);}
+.ps-main img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;}
+.ps-zoom-hint{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);color:white;font-size:0.65rem;font-weight:500;padding:4px 10px;border-radius:20px;pointer-events:none;opacity:0;transition:opacity 0.2s;}
+.ps-main:hover .ps-zoom-hint{opacity:1;}
+.ps-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.ps-thumb{border-radius:7px;overflow:hidden;cursor:none;line-height:0;border:1px solid rgba(0,0,0,0.08);transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.ps-thumb:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+.ps-thumb img{width:100%;height:72px;object-fit:cover;object-position:top;display:block;}
+.wide-thumb{grid-column:span 3;}
+.wide-thumb img{height:72px;}
+.proj-block-alt .ps-main,.proj-block-alt .ps-thumb{border-color:rgba(255,255,255,0.08);}
+
+/* PLACEHOLDER for empty img slots */
+.img-placeholder-slot{width:100%;height:100%;min-height:220px;background:linear-gradient(160deg,#1a1a1a,#2a2a2a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,0.2);font-size:0.72rem;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;}
+.img-placeholder-slot .ph-icon{font-size:1.8rem;opacity:0.3;}
+.thumb-placeholder{width:100%;height:72px;background:linear-gradient(135deg,#1a1a1a,#222);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:0.6rem;font-family:var(--mono);letter-spacing:0.08em;}
+.light-placeholder .img-placeholder-slot{background:linear-gradient(160deg,#e8e4dd,#ddd9d0);}
+.light-placeholder .img-placeholder-slot,.light-placeholder .ph-icon{color:rgba(0,0,0,0.2);}
+.light-placeholder .img-placeholder-slot .ph-icon{opacity:0.3;}
+.thumb-light{background:linear-gradient(135deg,#e8e4dd,#ddd9d0);color:rgba(0,0,0,0.2);}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;}
+.lb.lb-open{display:flex;}
+.lb-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.lb-inner img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
+.lb-caption{color:rgba(255,255,255,0.5);font-size:0.8rem;font-weight:400;}
+.lb-close{position:fixed;top:24px;right:28px;background:rgba(255,255,255,0.1);border:none;color:white;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:1001;transition:background 0.2s;}
+.lb-close:hover{background:rgba(255,255,255,0.2);}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:white;width:48px;height:48px;border-radius:50%;font-size:1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:1001;}
+.lb-prev{left:20px;}.lb-next{right:20px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,0.2);}
+
+/* APPS SECTION */
+.apps-row{padding:80px 0 40px;}
+.apps-header{margin-bottom:36px;}
+.apps-header p{font-size:0.9rem;color:var(--dim);font-weight:300;}
+.apps-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.app-card{background:white;border:1.5px solid var(--border-light);border-radius:16px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+.app-card:hover{border-color:rgba(192,57,43,0.3);box-shadow:0 8px 32px rgba(0,0,0,0.08);}
+.udos-app{border-color:rgba(109,40,217,0.2);}
+.udos-app:hover{border-color:rgba(109,40,217,0.4);}
+.foodhub-app{border-color:rgba(22,163,74,0.2);}
+.foodhub-app:hover{border-color:rgba(22,163,74,0.4);}
+.app-icon-area{padding:28px 28px 0;display:flex;align-items:center;gap:12px;}
+.focus-icon{background:linear-gradient(135deg,#0f172a,#1e293b);}
+.udos-icon{background:linear-gradient(135deg,#1e1b4b,#4c1d95);}
+.foodhub-icon{background:linear-gradient(135deg,#052e16,#166534);}
+.app-icon{font-size:2rem;background:rgba(255,255,255,0.1);width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+.app-mvp-badge{font-size:0.65rem;font-weight:700;background:rgba(22,163,74,0.2);color:#86efac;border:1px solid rgba(22,163,74,0.3);padding:3px 10px;border-radius:20px;}
+.app-invest-badge{font-size:0.65rem;font-weight:700;background:rgba(250,204,21,0.15);color:#ca8a04;border:1px solid rgba(250,204,21,0.3);padding:3px 10px;border-radius:20px;}
+.app-info{padding:20px 28px 28px;display:flex;flex-direction:column;gap:10px;}
+.app-cat{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--dim);}
+.app-info h4{font-size:1.1rem;font-weight:600;color:var(--ink);}
+.app-info p{font-size:0.83rem;color:#666;line-height:1.75;font-weight:300;}
+.app-feats{display:flex;flex-wrap:wrap;gap:6px;}
+.app-feats span{font-size:0.7rem;background:var(--cream);border:1px solid var(--border-light);padding:4px 10px;border-radius:50px;color:#555;}
+.app-btns{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;}
+.udos-invest-note,.foodhub-invest-note{font-size:0.8rem;color:#555;font-weight:300;}
+
+/* MORE STRIP */
+.more-strip{margin:0 0 0;border:1.5px solid var(--border-light);border-radius:16px;padding:36px 40px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:white;margin-bottom:0;}
+.ms-l h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:5px;}
+.ms-l p{font-size:0.8rem;color:var(--dim);font-weight:300;}
+.ms-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.ms-tags span{font-size:0.72rem;color:#666;border:1px solid var(--border-light);padding:5px 13px;border-radius:50px;background:var(--cream);}
+.work-sec .wrap:last-child{padding-bottom:100px;}
+
+/* EXPERIENCE */
+.exp-sec{background:var(--ink);padding:100px 0;}
+.exp-sec .sec-label{color:rgba(247,244,239,0.3);}
+.exp-sec .display-h2{color:var(--ivory);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:56px;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;}
+.exp-card{background:rgba(255,255,255,0.03);padding:36px;border-right:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.3s;display:flex;flex-direction:column;gap:7px;}
+.exp-card:hover{background:rgba(255,255,255,0.05);}
+.ec-yr{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;}
+.ec-role{font-size:1rem;font-weight:500;color:var(--ivory);}
+.ec-co{font-size:0.78rem;color:var(--red);font-weight:400;margin-bottom:4px;}
+.exp-card p{font-size:0.83rem;color:rgba(247,244,239,0.4);line-height:1.75;font-weight:300;}
+
+/* TESTIMONIALS */
+.testi-sec{background:var(--cream);padding:100px 0;}
+.testi-nums{display:flex;align-items:center;justify-content:flex-start;gap:48px;margin:0 0 56px;flex-wrap:wrap;}
+.tnum{display:flex;flex-direction:column;gap:4px;}
+.tnum-n{font-family:var(--serif);font-size:2.8rem;font-weight:400;color:var(--ink);letter-spacing:-0.04em;line-height:1;}
+.tnum-l{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--dim);}
+.tnum-sep{width:1px;height:48px;background:var(--border-light);}
+.testi-hero{background:white;border:1.5px solid var(--border-light);border-radius:16px;padding:40px;margin-bottom:24px;position:relative;}
+.th-quote{font-family:Georgia,serif;font-size:5rem;font-weight:400;color:rgba(192,57,43,0.15);line-height:0.6;position:absolute;top:28px;left:32px;}
+.th-text{font-family:var(--serif);font-size:1.25rem;font-weight:300;line-height:1.7;color:#333;font-style:italic;padding-top:40px;margin-bottom:28px;}
+.th-footer{display:flex;align-items:center;gap:14px;border-top:1px solid var(--border-light);padding-top:20px;}
+.th-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;flex-shrink:0;}
+.th-info{flex:1;display:flex;flex-direction:column;gap:2px;}
+.th-info strong{font-size:0.9rem;font-weight:600;color:var(--ink);}
+.th-info span{font-size:0.75rem;color:var(--dim);}
+.th-result{font-family:var(--mono);font-size:0.65rem;font-weight:500;background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.15);color:var(--red);padding:5px 12px;border-radius:50px;white-space:nowrap;}
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;}
+.tc{background:white;border:1.5px solid var(--border-light);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color 0.2s;}
+.tc:hover{border-color:rgba(192,57,43,0.3);}
+.tc-q{font-family:Georgia,serif;font-size:2.5rem;font-weight:400;color:rgba(192,57,43,0.15);line-height:0.8;display:block;}
+.tc p{font-size:0.88rem;color:#555;line-height:1.75;font-style:italic;font-weight:300;}
+.tc-foot{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border-light);padding-top:14px;}
+.tc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0;}
+.tc-foot>div strong{display:block;font-size:0.82rem;font-weight:600;color:var(--ink);}
+.tc-foot>div span{font-size:0.7rem;color:var(--dim);display:block;}
+.tc-res{margin-left:auto;font-family:var(--mono);font-size:0.62rem;font-weight:500;background:rgba(192,57,43,0.06);color:var(--red);border:1px solid rgba(192,57,43,0.12);padding:3px 9px;border-radius:50px;white-space:nowrap;}
+.testi-cta{text-align:center;padding:20px 0;}
+.testi-cta p{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:#666;font-style:italic;margin-bottom:18px;}
+
+/* TIKTOK BAND */
+.tiktok-band{background:var(--ink);padding:40px 0;border-top:1px solid rgba(255,255,255,0.06);}
+.ttb-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.ttb-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ee1d52,#69c9d0);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ttb-title{font-size:1rem;font-weight:600;color:var(--ivory);margin-bottom:4px;}
+.ttb-sub{font-size:0.8rem;color:rgba(247,244,239,0.35);font-weight:300;}
+.ttb-btn{display:inline-flex;align-items:center;background:white;color:var(--ink);padding:11px 22px;border-radius:50px;font-weight:600;font-size:0.82rem;transition:all 0.2s;white-space:nowrap;}
+.ttb-btn:hover{background:var(--ivory);transform:translateY(-2px);}
+
+/* CONTACT */
+.contact-sec{background:var(--ivory);padding:100px 0;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
+.contact-left p{font-size:0.9rem;color:#555;margin:0 0 28px;line-height:1.8;font-weight:300;}
+.contact-ways{display:flex;flex-direction:column;gap:10px;}
+.cw{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;border:1.5px solid var(--border-light);background:white;transition:all 0.2s;color:var(--ink);cursor:none;width:100%;text-align:left;}
+.cw:hover{border-color:rgba(192,57,43,0.3);transform:translateX(4px);}
+.cw-chat{background:rgba(192,57,43,0.04);border-color:rgba(192,57,43,0.2);}
+.cw-i{font-size:1.1rem;width:38px;height:38px;background:var(--cream);border:1px solid var(--border-light);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cw strong{display:block;font-size:0.85rem;font-weight:600;margin-bottom:1px;}
+.cw p{font-size:0.75rem;color:var(--dim);margin:0;font-weight:300;}
+.cw span:last-child{margin-left:auto;font-size:0.9rem;color:var(--dim);}
+.cf{display:flex;flex-direction:column;gap:16px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.cfg{display:flex;flex-direction:column;gap:6px;}
+.cfg label{font-size:0.75rem;font-weight:500;color:var(--ink);letter-spacing:0.01em;}
+.cfg input,.cfg textarea{padding:12px 16px;border:1.5px solid var(--border-light);border-radius:10px;font-family:var(--sans);font-size:0.88rem;color:var(--ink);background:white;outline:none;resize:vertical;transition:border-color 0.2s;cursor:none;}
+.cfg input:focus,.cfg textarea:focus{border-color:var(--red);}
+.cf-ok{background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.2);color:#15803d;padding:12px 16px;border-radius:9px;font-size:0.84rem;font-weight:500;}
+
+/* FOOTER */
+.footer{background:var(--ink);padding:48px 0;}
+.f-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.f-logo{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--ivory);}
+.f-logo em{font-style:normal;color:var(--gold);}
+.f-links{display:flex;gap:28px;}
+.f-links a{font-size:0.8rem;color:rgba(247,244,239,0.3);transition:color 0.2s;}
+.f-links a:hover{color:var(--ivory);}
+.f-div{height:1px;background:rgba(255,255,255,0.07);margin-bottom:20px;}
+.f-bot{display:flex;justify-content:space-between;}
+.f-bot span{font-size:0.75rem;color:rgba(247,244,239,0.2);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .pb-content,.pb-content-rev{grid-template-columns:1fr;gap:32px;}
+  .exp-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .more-strip{grid-template-columns:1fr;text-align:center;}
+  .ms-tags{justify-content:center;}
+  .more-strip .cta-primary{margin:0 auto;}
+  .apps-grid{grid-template-columns:1fr;}
+  .pb-header{padding:0 24px;}
+  .pb-content,.pb-content-rev{padding:0 24px;}
+}
+@media(max-width:768px){
+  .nav{padding:16px 24px;}
+  .nav.scrolled{padding:12px 24px;}
+  .nav-center{display:none;}
+  .nav-ham{display:flex;}
+  .hero{padding:100px 24px 60px;flex-direction:column;gap:40px;}
+  .hero-scroll-hint{display:none;}
+  .wrap{padding:0 24px;}
+  .testi-nums{gap:24px;}
+  .tnum-sep{display:none;}
+  .f-top{flex-direction:column;gap:16px;text-align:center;}
+  .f-links{flex-wrap:wrap;justify-content:center;}
+  .f-bot{flex-direction:column;gap:6px;align-items:center;}
+  .hero-right{width:100%;}
+  .hero-photo-frame{width:100%;height:auto;}
+  .hpf-inner{position:relative;width:220px;height:260px;margin:0 auto;}
+  .hpf-tag{display:none;}
+  .hpf-label{bottom:0;}
+  body{cursor:auto;}
+  .cursor,.cursor-dot{display:none;}
+  .ps-thumbs{grid-template-columns:repeat(2,1fr);}
+  .lb-prev{left:8px;}.lb-next{right:8px;}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:2.8rem;}
+  .cf-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()">&#x2715;</button>
+  <button class="lb-prev" id="lbPrev" onclick="lbNav(-1,event)">&#x2039;</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt=""/>
+    <div class="lb-caption" id="lbCap"></div>
+  </div>
+  <button class="lb-next" id="lbNext" onclick="lbNav(1,event)">&#x203A;</button>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">EV<em>.</em></a>
+  <div class="nav-center">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="btn-ghost" onclick="Tawk_API.toggle()">&#x1F4AC; Chat</button>
+    <button class="nav-ham" id="ham"><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-x" id="mobX">&#x2715;</button>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#work" onclick="closeMob()">Work</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="pulse-ring"></span><span>Available for projects</span></div>
+    <h1 class="hero-h1">
+      <span class="line-a">Ezenwata</span>
+      <span class="line-b"><em>Valentine</em></span>
+    </h1>
+    <div class="hero-role-line">
+      <span class="role-bar"></span>
+      <span class="typed-wrap"><span id="typed"></span><span class="blink">|</span></span>
+    </div>
+    <p class="hero-p">Full-stack developer building luxury real estate platforms, interior design experiences, food delivery apps, and mobile products that close deals and define brands — for clients across Nigeria, the UK, US, Canada, Australia and Germany.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="cta-primary">View My Work <span>&#x2197;</span></a>
+      <a href="#contact" class="cta-secondary">Start a Project</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hm"><span class="hm-n">16+</span><span class="hm-l">Projects</span></div>
+      <div class="hm-sep"></div>
+      <div class="hm"><span class="hm-n">3+</span><span class="hm-l">Years</span></div>
+      <div class="hm-sep"></div>
+      <div class="hm"><span class="hm-n">$70K+</span><span class="hm-l">Per Client</span></div>
+      <div class="hm-sep"></div>
+      <div class="hm"><span class="hm-n">6</span><span class="hm-l">Domains</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-frame">
+      <div class="hpf-inner">
+        <img src="Ezenwata.jpg" alt="Ezenwata Valentine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="hpf-fallback">EV</div>
+      </div>
+      <div class="hpf-tag t1">&#x269B; React</div>
+      <div class="hpf-tag t2">&#x1F517; Web3</div>
+      <div class="hpf-tag t3">&#x1F4F1; Flutter</div>
+      <div class="hpf-label"><span>Developer</span><span>Earth &#x2197; Global</span></div>
+    </div>
+    <div class="hero-socials">
+      <a href="https://tiktok.com/@devnollex" target="_blank" class="hs-link">@devnollex</a>
+      <a href="https://github.com/Nollex1" target="_blank" class="hs-link">GitHub &#x2197;</a>
+      <a href="https://linkedin.com/in/ezenwata-valentine" target="_blank" class="hs-link">LinkedIn &#x2197;</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" class="about-sec reveal-sec">
+  <div class="wrap">
+    <div class="sec-label">01 / About</div>
+    <div class="about-grid">
+      <div class="about-left">
+        <h2 class="display-h2">The person<br>behind the code</h2>
+      </div>
+      <div class="about-right">
+        <p>I'm <strong>Valentine</strong> — a self-taught full-stack developer who turns ideas into platforms that generate real revenue. Since 2023 I've built luxury real estate, interior design platforms, food delivery apps, and health store websites for international clients who needed a digital presence as refined as their brand.</p>
+        <p>My clients come from the US, UK, Canada, Australia, and Germany — and within weeks of launch they're closing six-figure deals. I'm also a TikTok creator <a href="https://tiktok.com/@devnollex" target="_blank" class="text-link">@devnollex</a> documenting the build for the next generation of African developers.</p>
+        <div class="stack-block">
+          <div class="stack-label">Full Stack</div>
+          <div class="stack-chips">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React.js</span><span>React Native</span><span>Flutter</span><span>Dart</span><span>Solidity</span><span>Node.js</span><span>MongoDB</span><span>PostgreSQL</span><span>REST APIs</span><span>Web3.js</span><span>Git</span>
+          </div>
+        </div>
+        <div class="about-facts">
+          <div class="af"><span>&#x1F4CD;</span><span>Earth — Delivering Globally</span></div>
+          <div class="af"><span>&#x1F680;</span><span>Founder — Udos Exchange &amp; FoodHub (MVPs)</span></div>
+          <div class="af"><span>&#x1F3AC;</span><span>TikTok Content Creator @devnollex</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WORK ═══════════════════════════════ -->
+<section id="work" class="work-sec">
+  <div class="wrap work-top">
+    <div class="sec-label">02 / Featured Work</div>
+    <div class="work-header">
+      <h2 class="display-h2">Real projects.<br>Real screenshots.<br>Real clients.</h2>
+      <p class="work-sub">Click any screenshot to zoom. Every project below was built for a real client or shipped as a live product.</p>
+    </div>
+  </div>
+
+  <!-- ══════ DOMUS ══════ -->
+  <div class="proj-block reveal-sec" id="proj-domus">
+    <div class="pb-header">
+      <div class="pb-meta">
+        <div class="pb-badge">&#x1F464; Client Delivered &middot; Live</div>
+        <div class="pb-cat">Real Estate Platform &middot; Abuja, Nigeria</div>
+      </div>
+      <div class="pb-links">
+        <a href="https://nollex1.github.io/Domus-Project-/" target="_blank" class="cta-primary sm">Live Demo &#x2197;</a>
+        <button onclick="Tawk_API.toggle()" class="cta-secondary sm">Ask About This</button>
+      </div>
+    </div>
+    <div class="pb-content">
+      <div class="pb-info">
+        <h3 class="pb-title">Domus Projects<br><em>Real Estate Solution</em></h3>
+        <p>A full luxury real estate platform for Domus Projects Solution in Abuja, Nigeria. Features property listings with real photos, filter tabs (All / For Sale / For Rent / Duplex / Apartment), WhatsApp contact, about section, and a complete property gallery. Built to match the premium quality of their properties.</p>
+        <div class="pb-feats">
+          <div>&#x2014; Property listings with real Abuja property photos</div>
+          <div>&#x2014; Filter tabs — All, For Sale, For Rent, Duplex, Apartment</div>
+          <div>&#x2014; WhatsApp CTA + contact agent buttons on every listing</div>
+          <div>&#x2014; About section with trust signals — Verified Listings, NHF Loan Help</div>
+          <div>&#x2014; Full gallery with real property images</div>
+        </div>
+        <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
+      </div>
+      <div class="pb-shots" data-proj="domus">
+        <div class="ps-main" data-proj="domus" data-idx="0" data-cap="Domus Projects — Hero" onclick="openLb(this)">
+          <img src="Domus.png" alt="Domus Hero"/>
+          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+        </div>
+        <div class="ps-thumbs">
+          <div class="ps-thumb" data-proj="domus" data-idx="1" data-cap="Domus — Listings" onclick="openLb(this)"><img src="Domus-2.png" alt="Domus Listings"/></div>
+          <div class="ps-thumb" data-proj="domus" data-idx="2" data-cap="Domus — More Listings" onclick="openLb(this)"><img src="Domus-3.png" alt="Domus More"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ AYB STANDARD ══════ -->
+  <div class="proj-block proj-block-alt reveal-sec" id="proj-ayb">
+    <div class="pb-header">
+      <div class="pb-meta">
+        <div class="pb-badge">&#x2713; Live on GitHub Pages</div>
+        <div class="pb-cat">Bespoke Furniture &amp; Interiors &middot; Lekki, Lagos</div>
+      </div>
+      <div class="pb-links">
+        <a href="https://nollex1.github.io/AYB-Projects/" target="_blank" class="cta-primary sm">Live Demo &#x2197;</a>
+        <a href="https://github.com/Nollex1/AYB-Projects" target="_blank" class="cta-secondary sm">GitHub &#x2197;</a>
+      </div>
+    </div>
+    <div class="pb-content pb-content-rev">
+      <div class="pb-shots" data-proj="ayb">
+        <div class="ps-main" data-proj="ayb" data-idx="0" data-cap="AYB Standard — Hero" onclick="openLb(this)">
+          <img src="AYB ST.png" alt="AYB Standard Hero"/>
+          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+        </div>
+        <div class="ps-thumbs">
+          <div class="ps-thumb" data-proj="ayb" data-idx="1" data-cap="AYB Standard — Featured Projects" onclick="openLb(this)"><img src="AYB Projects.png" alt="AYB Projects"/></div>
+          <div class="ps-thumb" data-proj="ayb" data-idx="2" data-cap="AYB Standard — Gallery" onclick="openLb(this)"><img src="AYB Project Gallery.png" alt="AYB Gallery"/></div>
+        </div>
+      </div>
+      <div class="pb-info">
+        <h3 class="pb-title">AYB Standard<br><em>Furniture &amp; Interiors</em></h3>
+        <p>A luxury bespoke furniture and interior installations website for AYB Standard — CAC Registered, based in Lekki, Lagos. "Transforming Spaces into Masterpieces." Features real project photography, a full gallery with completed installations, and a consultation booking system. Live on GitHub Pages.</p>
+        <div class="pb-feats">
+          <div>&#x2014; Full-bleed hero with real luxury interior photography</div>
+          <div>&#x2014; Featured Projects — Luxury Living Room Suite, Marble &amp; LED TV Wall</div>
+          <div>&#x2014; Complete Project Gallery — real installation photos</div>
+          <div>&#x2014; CAC Registered Reg. No. 7402944 trust badge</div>
+          <div>&#x2014; Request a Consultation CTA</div>
+        </div>
+        <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ FOODHUB ══════ -->
+  <div class="proj-block reveal-sec" id="proj-foodhub">
+    <div class="pb-header">
+      <div class="pb-meta">
+        <div class="pb-badge">&#x1F4BC; Seeking Investment &middot; MVP Built</div>
+        <div class="pb-cat">Food Delivery App &middot; Nigeria</div>
+      </div>
+      <div class="pb-links">
+        <button onclick="Tawk_API.toggle()" class="cta-primary sm">Invest / Partner &#x2197;</button>
+        <button onclick="Tawk_API.toggle()" class="cta-secondary sm">Ask About This</button>
+      </div>
+    </div>
+    <div class="pb-content">
+      <div class="pb-info">
+        <h3 class="pb-title">FoodHub<br><em>Food Delivery Platform</em></h3>
+        <p>A full-featured food delivery app and platform built for the Nigerian market. FoodHub connects local restaurants, home chefs, and customers in a seamless ordering experience — with real-time tracking, payment integration, and a vendor dashboard. MVP is fully built and tested. Currently seeking strategic investors to scale.</p>
+        <div class="pb-feats">
+          <div>&#x2014; Customer app — browse restaurants, order, track in real-time</div>
+          <div>&#x2014; Vendor dashboard — manage menu, orders, and earnings</div>
+          <div>&#x2014; Rider tracking — live delivery status updates</div>
+          <div>&#x2014; Paystack &amp; Flutterwave payment integration</div>
+          <div>&#x2014; Built for Nigerian market — Naira, local cuisine focus</div>
+        </div>
+        <div class="pb-stack">React Native &middot; Flutter &middot; Node.js &middot; MongoDB &middot; REST API</div>
+        <div style="margin-top:8px;padding:12px 16px;background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.18);border-radius:10px;font-size:0.82rem;color:#15803d;line-height:1.65;">
+          &#x1F4BC; <strong>Investor Opportunity</strong> — FoodHub MVP is ready. Looking for strategic partners or investors to fund growth, marketing, and city-by-city expansion across Nigeria. <button onclick="Tawk_API.toggle()" class="text-btn" style="color:#15803d;border-bottom-color:#15803d;">Chat to discuss &#x2192;</button>
+        </div>
+      </div>
+      <div class="pb-shots" data-proj="foodhub">
+        <div class="ps-main light-placeholder" data-proj="foodhub" data-idx="0" data-cap="FoodHub — App Screenshot 1" onclick="openLb(this)">
+          <img src="FoodHub.png" alt="FoodHub Screenshot 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder-slot" style="display:none"><div class="ph-icon">&#x1F354;</div><div>FoodHub-1.png</div></div>
+          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+        </div>
+        <div class="ps-thumbs">
+          <div class="ps-thumb" data-proj="foodhub" data-idx="1" data-cap="FoodHub — App Screenshot 2" onclick="openLb(this)">
+            <img src="FoodHub1.png" alt="FoodHub Screenshot 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="thumb-light" style="display:none;height:72px;align-items:center;justify-content:center;font-size:0.58rem;font-family:var(--mono);color:rgba(0,0,0,0.2)">FoodHub-2.png</div>
+          </div>
+          <div class="ps-thumb" data-proj="foodhub" data-idx="2" data-cap="FoodHub — App Screenshot 3" onclick="openLb(this)">
+            <img src="FoodHub 3.png" alt="FoodHub Screenshot 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="thumb-light" style="display:none;height:72px;align-items:center;justify-content:center;font-size:0.58rem;font-family:var(--mono);color:rgba(0,0,0,0.2)">FoodHub-3.png</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ MUMMY DELICIOUS ══════ -->
+  <div class="proj-block proj-block-alt reveal-sec" id="proj-mummydelicious">
+    <div class="pb-header">
+      <div class="pb-meta">
+        <div class="pb-badge">&#x2713; Client Delivered &middot; Live</div>
+        <div class="pb-cat">Food Brand &amp; Online Store &middot; Nigeria</div>
+      </div>
+      <div class="pb-links">
+        <button onclick="Tawk_API.toggle()" class="cta-primary sm">View Project &#x2197;</button>
+        <button onclick="Tawk_API.toggle()" class="cta-secondary sm">Ask About This</button>
+      </div>
+    </div>
+    <div class="pb-content pb-content-rev">
+      <div class="pb-shots" data-proj="mummydelicious">
+        <div class="ps-main" data-proj="mummydelicious" data-idx="0" data-cap="Mummy Delicious — Homepage" onclick="openLb(this)">
+          <img src="Mummy Delicious.png" alt="Mummy Delicious Homepage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder-slot" style="display:none"><div class="ph-icon">&#x1F370;</div><div>MummyDelicious-1.png</div></div>
+          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+        </div>
+        <div class="ps-thumbs">
+          <div class="ps-thumb" data-proj="mummydelicious" data-idx="1" data-cap="Mummy Delicious — Menu" onclick="openLb(this)">
+            <img src="Mummy Delicious (2).png" alt="Mummy Delicious Menu" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="img-placeholder-slot" style="display:none;height:72px;font-size:0.58rem;font-family:var(--mono);color:rgba(255,255,255,0.2);background:linear-gradient(135deg,#1a1a1a,#222);align-items:center;justify-content:center">MummyDelicious-2.png</div>
+          </div>
+          <div class="ps-thumb" data-proj="mummydelicious" data-idx="2" data-cap="Mummy Delicious — Order" onclick="openLb(this)">
+            <img src="Mummy Delicious 2.png" alt="Mummy Delicious Order" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="img-placeholder-slot" style="display:none;height:72px;font-size:0.58rem;font-family:var(--mono);color:rgba(255,255,255,0.2);background:linear-gradient(135deg,#1a1a1a,#222);align-items:center;justify-content:center">MummyDelicious-3.png</div>
+          </div>
+        </div>
+      </div>
+      <div class="pb-info">
+        <h3 class="pb-title">Mummy Delicious<br><em>Food Brand Website</em></h3>
+        <p>A warm, vibrant website and online ordering platform for Mummy Delicious — a beloved Nigerian home-cooking and food brand. Showcases signature dishes, enables WhatsApp ordering, and builds brand trust with an inviting, appetite-driving design. Built to capture both local and diaspora customers craving authentic flavors.</p>
+        <div class="pb-feats">
+          <div>&#x2014; Appetizing hero with signature dish photography</div>
+          <div>&#x2014; Full menu showcase — categories, descriptions, prices</div>
+          <div>&#x2014; WhatsApp order CTA on every menu item</div>
+          <div>&#x2014; About / brand story section</div>
+          <div>&#x2014; Mobile-first design for on-the-go ordering</div>
+        </div>
+        <div class="pb-stack">HTML &middot; CSS &middot; JavaScript</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ DEAN AIM GLOBAL ══════ -->
+  <div class="proj-block reveal-sec" id="proj-deanaimglobal">
+    <div class="pb-header">
+      <div class="pb-meta">
+        <div class="pb-badge">&#x2713; Client Delivered &middot; Live</div>
+        <div class="pb-cat">Health &amp; Wellness E-Commerce &middot; Nigeria</div>
+      </div>
+      <div class="pb-links">
+        <button onclick="Tawk_API.toggle()" class="cta-primary sm">View Project &#x2197;</button>
+        <button onclick="Tawk_API.toggle()" class="cta-secondary sm">Ask About This</button>
+      </div>
+    </div>
+    <div class="pb-content">
+      <div class="pb-info">
+        <h3 class="pb-title">Dean AIM Global<br><em>Health Store &amp; E-Commerce</em></h3>
+        <p>A full health product e-commerce landing page for an authorized AIM Global distributor in Nigeria. Features 7 product cards with embedded product images, detailed modal pop-ups with full health benefits and ingredients, WhatsApp ordering integration, customer testimonials, and a discount notice system. Built to convert browsers into buyers.</p>
+        <div class="pb-feats">
+          <div>&#x2014; 7 product cards — Liven Coffee, MyChoco, C24/7, Choleduz, Burn Slim &amp; more</div>
+          <div>&#x2014; "Learn More" modal — full ingredients, benefits, how-to per product</div>
+          <div>&#x2014; WhatsApp order button — pre-fills product name + location prompt</div>
+          <div>&#x2014; 6 customer testimonials — verified real stories</div>
+          <div>&#x2014; Discount notice — 2+ packs get a discount</div>
+        </div>
+        <div class="pb-stack">HTML &middot; CSS &middot; JavaScript &middot; WhatsApp API</div>
+      </div>
+      <div class="pb-shots" data-proj="deanaimglobal">
+        <div class="ps-main light-placeholder" data-proj="deanaimglobal" data-idx="0" data-cap="Dean AIM Global — Homepage" onclick="openLb(this)">
+          <img src="Dean.png" alt="Dean AIM Global Homepage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder-slot" style="display:none"><div class="ph-icon">&#x1F33F;</div><div>DeanAIMGlobal-1.png</div></div>
+          <div class="ps-zoom-hint">&#x1F50D; Click to zoom</div>
+        </div>
+        <div class="ps-thumbs">
+          <div class="ps-thumb" data-proj="deanaimglobal" data-idx="1" data-cap="Dean AIM Global — Products" onclick="openLb(this)">
+            <img src="Dean (2).png" alt="Dean AIM Global Products" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="thumb-light" style="display:none;height:72px;display:flex;align-items:center;justify-content:center;font-size:0.58rem;font-family:var(--mono);color:rgba(0,0,0,0.2);background:linear-gradient(135deg,#e8e4dd,#ddd9d0)">DeanAIMGlobal-2.png</div>
+          </div>
+          <div class="ps-thumb" data-proj="deanaimglobal" data-idx="2" data-cap="Dean AIM Global — Testimonials" onclick="openLb(this)">
+            <img src="Dean (3).png" alt="Dean AIM Global Testimonials" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="thumb-light" style="display:none;height:72px;display:flex;align-items:center;justify-content:center;font-size:0.58rem;font-family:var(--mono);color:rgba(0,0,0,0.2);background:linear-gradient(135deg,#e8e4dd,#ddd9d0)">DeanAIMGlobal-3.png</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ APPS ROW ══════ -->
+  <div class="wrap">
+    <div class="apps-row reveal-sec">
+      <div class="apps-header">
+        <h3 class="display-h2" style="font-size:1.8rem">Mobile Apps I Built</h3>
+        <p>Three shipped or MVP-ready mobile applications — two seeking investment to scale.</p>
+      </div>
+      <div class="apps-grid">
+
+        <!-- Focus App -->
+        <div class="app-card">
+          <div class="app-icon-area focus-icon">
+            <div class="app-icon">&#x23F0;</div>
+          </div>
+          <div class="app-info">
+            <div class="app-cat">React Native &middot; Expo &middot; TypeScript</div>
+            <h4>Focus Reminder App</h4>
+            <p>A minimalist daily planning and reminder app built with Expo and React Native. Pomodoro timer, task checklist, daily goals, and focus session tracking. Clean, minimal UI designed for deep work.</p>
+            <div class="app-feats">
+              <span>&#x23F1; Pomodoro Timer</span>
+              <span>&#x2611; Task Checklist</span>
+              <span>&#x1F4C5; Daily Planner</span>
+              <span>&#x1F4CA; Focus Stats</span>
+            </div>
+            <div class="app-btns">
+              <a href="https://github.com/Nollex1/Focus-app" target="_blank" class="cta-primary sm">GitHub &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Udos Exchange -->
+        <div class="app-card udos-app">
+          <div class="app-icon-area udos-icon">
+            <div class="app-icon">&#x1F48E;</div>
+            <div class="app-mvp-badge">MVP &#x2713;</div>
+          </div>
+          <div class="app-info">
+            <div class="app-cat">Flutter &middot; Dart &middot; REST API</div>
+            <h4>Udos Exchange</h4>
+            <p>A gift card buying and selling platform for Nigerians and diaspora — trade Amazon, iTunes, Steam, and Google Play cards at live market rates. MVP fully built and tested. Seeking strategic investors to scale.</p>
+            <div class="app-feats">
+              <span>&#x1F6D2; Buy &amp; Sell Cards</span>
+              <span>&#x1F4C8; Live Market Rates</span>
+              <span>&#x26A1; Instant Processing</span>
+              <span>&#x1F1F3;&#x1F1EC; Built for Nigeria</span>
+            </div>
+            <div class="udos-invest-note">
+              &#x1F4BC; Seeking investors — <button onclick="Tawk_API.toggle()" class="text-btn">Chat to learn more &#x2192;</button>
+            </div>
+            <div class="app-btns">
+              <a href="https://github.com/Nollex1/giftcard-marketplace-mvp" target="_blank" class="cta-primary sm">GitHub &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FoodHub App -->
+        <div class="app-card foodhub-app">
+          <div class="app-icon-area foodhub-icon">
+            <div class="app-icon">&#x1F354;</div>
+            <div class="app-invest-badge">Seeking Investment</div>
+          </div>
+          <div class="app-info">
+            <div class="app-cat">React Native &middot; Flutter &middot; Node.js &middot; MongoDB</div>
+            <h4>FoodHub</h4>
+            <p>Nigeria's next food delivery app — connecting local restaurants, home chefs, and customers with seamless ordering, real-time rider tracking, and a vendor dashboard. MVP fully built. Looking for investors to fund expansion across Nigerian cities.</p>
+            <div class="app-feats">
+              <span>&#x1F6F5; Live Tracking</span>
+              <span>&#x1F4B3; Paystack / Flutterwave</span>
+              <span>&#x1F373; Vendor Dashboard</span>
+              <span>&#x1F1F3;&#x1F1EC; Nigerian Market</span>
+            </div>
+            <div class="foodhub-invest-note">
+              &#x1F4BC; Investor opportunity — <button onclick="Tawk_API.toggle()" class="text-btn">Chat to invest &#x2192;</button>
+            </div>
+            <div class="app-btns">
+              <button onclick="Tawk_API.toggle()" class="cta-primary sm">View MVP &#x2197;</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MORE -->
+    <div class="more-strip reveal-sec">
+      <div class="ms-l"><h3>More on GitHub</h3><p>Web3 dApps, chess engines, logistics systems, and more.</p></div>
+      <div class="ms-tags">
+        <span>Hauntedchain dApp</span><span>Fairex Shipment</span><span>QuestForge RPG</span>
+        <span>Floriculture App</span><span>Silvers Farm</span><span>RPG Chess</span>
+        <span>Auth System</span><span>Data Dashboard</span>
+      </div>
+      <a href="https://github.com/Nollex1" target="_blank" class="cta-primary">View All &#x2197;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<section id="experience" class="exp-sec reveal-sec">
+  <div class="wrap">
+    <div class="sec-label">03 / Experience</div>
+    <h2 class="display-h2">Where I've built<br>&amp; grown</h2>
+    <div class="exp-grid">
+      <div class="exp-card reveal-item"><div class="ec-yr">2025 — Present</div><div class="ec-role">Freelance Full-Stack Developer</div><div class="ec-co">International Clients &middot; Upwork</div><p>Delivering real estate platforms, interior design sites, food delivery apps, health store e-commerce, and logistics systems for clients in the US, UK, Canada, Australia, and Germany. Closed $70K+ per client.</p></div>
+      <div class="exp-card reveal-item"><div class="ec-yr">2025 — Present</div><div class="ec-role">Founder — Udos Exchange &amp; FoodHub</div><div class="ec-co">MVP Stage · Seeking Investment</div><p>Building two startup products — a gift card exchange platform and a Nigerian food delivery app. Both MVPs built and tested. Seeking strategic investors to scale both products. <button onclick="Tawk_API.toggle()" class="text-btn">Chat to invest &#x2192;</button></p></div>
+      <div class="exp-card reveal-item"><div class="ec-yr">2024 — Present</div><div class="ec-role">TikTok Developer Creator</div><div class="ec-co">@devnollex</div><p>Weekly developer content — project builds, coding tips, and the African tech scene. Building a community of aspiring developers who follow the journey.</p></div>
+      <div class="exp-card reveal-item"><div class="ec-yr">2024</div><div class="ec-role">Technical Writer &amp; Developer</div><div class="ec-co">Hashnode</div><p>Built a responsive platform and published technical articles combining real-world code with practical developer insights.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TESTIMONIALS ═══════════════════════════════ -->
+<section id="testimonials" class="testi-sec reveal-sec">
+  <div class="wrap">
+    <div class="sec-label">04 / Client Results</div>
+    <h2 class="display-h2">Real clients.<br>Real results.</h2>
+    <div class="testi-nums">
+      <div class="tnum"><div class="tnum-n">50+</div><div class="tnum-l">Leads Closed</div></div>
+      <div class="tnum-sep"></div>
+      <div class="tnum"><div class="tnum-n">6</div><div class="tnum-l">Active Clients</div></div>
+      <div class="tnum-sep"></div>
+      <div class="tnum"><div class="tnum-n">$70K+</div><div class="tnum-l">Per Client</div></div>
+      <div class="tnum-sep"></div>
+      <div class="tnum"><div class="tnum-n">6-Fig</div><div class="tnum-l">Deals Closed</div></div>
+    </div>
+    <div class="testi-hero reveal-item">
+      <div class="th-quote">&#x201C;</div>
+      <p class="th-text">Valentine built us a lead system that completely transformed how we operate. Within the first month we closed over 50 qualified leads and had 12 hot prospects in the pipeline. We captured a 6-figure contract from a lead that came in at 2am — we would have missed it entirely without his system.</p>
+      <div class="th-footer">
+        <div class="th-av" style="background:linear-gradient(135deg,#7f1d1d,#c0392b)">AR</div>
+        <div class="th-info"><strong>Alex Revard</strong><span>Real Estate &amp; Contractor Systems &middot; &#x1F1FA;&#x1F1F8; US</span></div>
+        <div class="th-result">$70K+ deal closed</div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="tc reveal-item"><p class="tc-q">&#x201C;</p><p>"He delivered a full CRM backend in 2 weeks. Within 6 weeks we had 6 active clients generating consistent revenue."</p><div class="tc-foot"><div class="tc-av" style="background:#1c1917">MK</div><div><strong>Marcus K.</strong><span>&#x1F1EC;&#x1F1E7; UK &middot; Real Estate Agency</span></div><div class="tc-res">6 clients &middot; 6 weeks</div></div></div>
+      <div class="tc reveal-item"><p class="tc-q">&#x201C;</p><p>"Three contracts worth $70K+ each. We went from zero enquiries to 12 qualified prospects in the first month."</p><div class="tc-foot"><div class="tc-av" style="background:#78350f">DT</div><div><strong>Daniel T.</strong><span>&#x1F1E8;&#x1F1E6; Canada &middot; Contracting Firm</span></div><div class="tc-res">3 &#xD7; $70K+</div></div></div>
+      <div class="tc reveal-item"><p class="tc-q">&#x201C;</p><p>"Closed 2 six-figure property deals in 60 days. The luxury platform matched our brand — clients commented on it immediately."</p><div class="tc-foot"><div class="tc-av" style="background:#4c1d95">SO</div><div><strong>Sarah O.</strong><span>&#x1F1E6;&#x1F1FA; Australia &middot; Property Developer</span></div><div class="tc-res">2 &#xD7; 6-fig</div></div></div>
+      <div class="tc reveal-item"><p class="tc-q">&#x201C;</p><p>"Our sales team closes 40% faster. Everything tracked in one place. Delivered in 2 weeks and stayed to make sure everything was perfect."</p><div class="tc-foot"><div class="tc-av" style="background:#0c4a6e">JM</div><div><strong>James M.</strong><span>&#x1F1E9;&#x1F1EA; Germany &middot; Construction CEO</span></div><div class="tc-res">40% faster</div></div></div>
+    </div>
+    <div class="testi-cta reveal-item"><p>Ready to get results like these?</p><a href="#contact" class="cta-primary lg">Start a Project &#x2192;</a></div>
+  </div>
+</section>
+
+<!-- TIKTOK BAND -->
+<div class="tiktok-band">
+  <div class="wrap ttb-inner">
+    <div class="ttb-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg></div>
+    <div><div class="ttb-title">Follow the Build Journey</div><div class="ttb-sub">Weekly developer content — real projects, real process, building from Nigeria.</div></div>
+    <a href="https://tiktok.com/@devnollex" target="_blank" class="ttb-btn">@devnollex &#x2197;</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact" class="contact-sec reveal-sec">
+  <div class="wrap">
+    <div class="sec-label">05 / Get in Touch</div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2 class="display-h2">Let's build<br>something great</h2>
+        <p>Project, job offer, or investment in Udos Exchange or FoodHub — I respond within 24 hours. Or hit live chat for an instant reply.</p>
+        <div class="contact-ways">
+          <a href="mailto:ezeznwatavalentine1@gmail.com" class="cw"><div class="cw-i">&#x1F4E7;</div><div><strong>Email</strong><p>ezeznwatavalentine1@gmail.com</p></div><span>&#x2192;</span></a>
+          <button onclick="Tawk_API.toggle()" class="cw cw-chat"><div class="cw-i">&#x1F4AC;</div><div><strong>Live Chat</strong><p>Instant reply — I'm online</p></div><span>&#x2192;</span></button>
+          <a href="https://tiktok.com/@devnollex" target="_blank" class="cw"><div class="cw-i">&#x1F3B5;</div><div><strong>TikTok</strong><p>@devnollex</p></div><span>&#x2192;</span></a>
+          <a href="https://linkedin.com/in/ezenwata-valentine" target="_blank" class="cw"><div class="cw-i">&#x1F4BC;</div><div><strong>LinkedIn</strong><p>Ezenwata Valentine</p></div><span>&#x2192;</span></a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <form id="cf" class="cf" onsubmit="submitForm(event)">
+          <div class="cf-row"><div class="cfg"><label>Name *</label><input type="text" id="cfN" placeholder="Your name" required/></div><div class="cfg"><label>Email *</label><input type="email" id="cfE" placeholder="your@email.com" required/></div></div>
+          <div class="cfg"><label>Subject</label><input type="text" id="cfS" placeholder="Real estate platform · Job offer · FoodHub / Udos investment..."/></div>
+          <div class="cfg"><label>Message *</label><textarea id="cfM" rows="5" placeholder="Tell me about your project, timeline, and budget..." required></textarea></div>
+          <div class="cf-ok" id="cfOk" style="display:none">&#x2705; Sent! I'll reply within 24 hours.</div>
+          <button type="submit" class="cta-primary full">Send Message &#x2192;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-top"><div class="f-logo">EV<em>.</em></div><div class="f-links"><a href="https://tiktok.com/@devnollex" target="_blank">TikTok</a><a href="https://github.com/Nollex1" target="_blank">GitHub</a><a href="https://linkedin.com/in/ezenwata-valentine" target="_blank">LinkedIn</a><a href="mailto:ezeznwatavalentine1@gmail.com">Email</a></div></div>
+    <div class="f-div"></div>
+    <div class="f-bot"><span>&#xA9; 2025 Ezenwata Valentine</span><span>Built by Valentine &middot; @devnollex</span></div>
+  </div>
+</footer>
+
+<!-- TAWK.TO -->
+<script>
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;s1.src='https://embed.tawk.to/69ace774ddd7fc1c348528e3/default';
+s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();
+
+// CURSOR
+const cursor=document.getElementById('cursor'),dot=document.getElementById('cursorDot');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*0.1;cy+=(my-cy)*0.1;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.ps-main,.ps-thumb').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('ch'));el.addEventListener('mouseleave',()=>cursor.classList.remove('ch'));});
+
+// NAV + MOBILE
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+document.getElementById('ham').onclick=()=>document.getElementById('mobMenu').classList.add('open');
+document.getElementById('mobX').onclick=closeMob;
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+
+// TYPED
+const words=["Real Estate Platforms.","Food Delivery Apps.","Mobile Apps.","Health Store Sites.","Things That Close Deals."];
+let wi=0,ci=0,del=false;
+const tw=document.getElementById('typed');
+function type(){const w=words[wi];tw.textContent=del?w.slice(0,--ci):w.slice(0,++ci);if(!del&&ci===w.length){del=true;setTimeout(type,2000);return;}if(del&&ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,300);return;}setTimeout(type,del?45:75);}
+type();
+
+// REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('in-view');obs.unobserve(i.target);}}),{threshold:0.06});
+document.querySelectorAll('.reveal-sec,.reveal-item,.exp-card').forEach(el=>obs.observe(el));
+
+// LIGHTBOX
+let lbImgs=[],lbIdx=0;
+function openLb(el){
+  const proj=el.dataset.proj,idx=parseInt(el.dataset.idx)||0;
+  const imgs=document.querySelectorAll(`[data-proj="${proj}"] img`);
+  lbImgs=Array.from(imgs).map(i=>i.src).filter(s=>s&&!s.endsWith('undefined'));
+  lbIdx=idx;
+  if(!lbImgs.length)return;
+  document.getElementById('lbImg').src=lbImgs[lbIdx];
+  document.getElementById('lbCap').textContent=el.dataset.cap||'';
+  document.getElementById('lb').classList.add('lb-open');
+  document.getElementById('lbPrev').style.display=lbImgs.length>1?'flex':'none';
+  document.getElementById('lbNext').style.display=lbImgs.length>1?'flex':'none';
+  document.body.style.overflow='hidden';
+}
+function closeLb(){document.getElementById('lb').classList.remove('lb-open');document.body.style.overflow='';}
+function lbNav(dir,e){if(e)e.stopPropagation();lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;document.getElementById('lbImg').src=lbImgs[lbIdx];}
+
+// CONTACT
+function submitForm(e){e.preventDefault();const n=document.getElementById('cfN').value,em=document.getElementById('cfE').value,s=document.getElementById('cfS').value||'Inquiry',m=document.getElementById('cfM').value;window.location.href=`mailto:ezeznwatavalentine1@gmail.com?subject=${encodeURIComponent(s+' - '+n)}&body=${encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+m)}`;document.getElementById('cfOk').style.display='block';document.getElementById('cf').reset();}
+</script>
+</body>
+</html>
